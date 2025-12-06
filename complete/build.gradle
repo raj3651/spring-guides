@@ -19,6 +19,27 @@ repositories {
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-webmvc'
+
+    // === AWS SDK v2 - Latest stable as of Dec 2025 ===
+    def awsSdkVersion = '2.40.0'   // ← THIS IS THE KEY VERSION (fixes most bugs)
+
+    implementation "software.amazon.awssdk:s3:$awsSdkVersion"
+    implementation "software.amazon.awssdk:s3-transfer-manager:$awsSdkVersion"
+    implementation "software.amazon.awssdk:aws-crt-client:$awsSdkVersion"            // ← AWS CRT HTTP client (best for streaming)
+    implementation "software.amazon.awssdk:apache-client:$awsSdkVersion"
+    implementation "software.amazon.awssdk:netty-nio-client:$awsSdkVersion" // ← Fallback if CRT not available
+
+    // Optional but recommended
+    implementation "software.amazon.awssdk:auth:$awsSdkVersion"
+    implementation "software.amazon.awssdk:regions:$awsSdkVersion"
+
+    // Lombok (optional, but used in code)
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+
+    // Logging
+    implementation 'org.springframework.boot:spring-boot-starter-logging'
+
 	testImplementation 'org.springframework.boot:spring-boot-starter-webmvc-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }

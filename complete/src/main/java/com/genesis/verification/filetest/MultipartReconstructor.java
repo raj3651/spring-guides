@@ -19,8 +19,8 @@ public class MultipartReconstructor {
 
     public static void main(String[] args) throws IOException {
         args = new String[2];
-        args[0] = "C:\\Users\\itsme\\Desktop\\multpart_download002";
-        args[1] = "C:\\Users\\itsme\\Desktop\\decoded.msi";
+        args[0] = "C:\\Users\\itsme\\Desktop\\multpart_download004";
+        args[1] = "C:\\Users\\itsme\\Desktop\\decoded.mp4";
         if (args.length != 2) {
             System.err.println("Usage: java MultipartReconstructor <response.bin> <reconstructed.bin>");
             System.exit(2);

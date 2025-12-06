@@ -1,0 +1,28 @@
+server:
+  tomcat:
+    # THIS IS THE MOST IMPORTANT LINE — disables Tomcat's aggressive body swallowing
+    max-swallow-size: -1
+    # Optional but recommended for large files
+    max-http-form-post-size: -1
+    max-http-header-size: 65536   # 64 KB (for very long Range headers)
+    connection-timeout: 300000   # 5 minutes (for slow S3 chunks)
+    keep-alive-timeout: 60000     # 60 seconds
+    max-connections: 10000
+    accept-count: 1000
+
+  servlet:
+    session:
+      timeout: 30m
+
+spring:
+  servlet:
+    multipart:
+      max-file-size: -1
+      max-request-size: -1
+
+# Optional: Logging level to see when Tomcat cuts off streams
+logging:
+  level:
+    org.apache.coyote.http11.Http11InputBuffer: DEBUG
+    org.apache.tomcat.util.net: WARN
+    software.amazon.awssdk: INFO
